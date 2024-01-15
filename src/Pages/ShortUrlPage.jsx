@@ -10,19 +10,19 @@ import Swal from "sweetalert2";
 export default function ShortUrlPage(){
 
     const navigate=useNavigate();
-    const {msg,setMsg,url,setUrl,clip,setClip}=useContext(AppCtx);
+    const {msg,setMsg,url,setUrl,clip,setClip,loading,setLoading}=useContext(AppCtx);
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             longUrl:""  
         },
         validationSchema:urlSchema,
         onSubmit:async(formikObj)=>{
-            
+            setLoading(true);
             setMsg("");
             setUrl("");
             addUrl(formikObj).then((result)=>{
                 if(result.error){
-                    
+                    setLoading(false)
                     setMsg(result.error)
                 }else{
                   const details={
@@ -30,15 +30,15 @@ export default function ShortUrlPage(){
                   }
                   shortUrl(details).then((result)=>{
                     if(result.error){
-                        
+                        setLoading(false)
                         setMsg(result.error)
                     }else{
-                        
-                          
+                        setTimeout(()=>{
+                            setLoading(false)
                             setUrl(result.message.shortUrl)
-                        
+                        },2000)
                     }
-                }).catch((error)=>{
+                }).catch((error)=>{setLoading(false)
                     console.log("error getting data")})
                 }
             })
@@ -47,6 +47,10 @@ export default function ShortUrlPage(){
     })
 
     useEffect(()=>{
+        setMsg("");
+        setUrl("");
+        setClip("");
+        setLoading(false);
         if(!localStorage.getItem("token")){
             Swal.fire({
                 icon: "error",
@@ -54,9 +58,6 @@ export default function ShortUrlPage(){
                 text: "By clicking Ok, you will be redirected to login page",
             });
             navigate("/login");
-            setMsg("");
-            setUrl("");
-            setClip("");
         }
     },[])
     return(
@@ -67,7 +68,7 @@ export default function ShortUrlPage(){
                 <div className="card-body">
                     <input value={values.longUrl} name="longUrl" onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Paste Long Url" className="skeleton input text-center input-bordered input-secondary w-full max-w-xs" />
                     {touched.longUrl && errors.longUrl?(<div className="text-secondary text-center">{errors.longUrl}</div>):""}
-                    <button className="btn btn-primary" type="submit">Shorten</button>
+                    <button className="btn btn-primary" type="submit">{loading==true?<span className="loading loading-ring loading-sm"></span>:"Shorten"}</button>
                 </div>
                 {msg?<div className="text-secondary text-center">{msg}</div> :""}
                 </form>
