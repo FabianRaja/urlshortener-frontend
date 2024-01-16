@@ -7,19 +7,17 @@ export default function AppContext({children}){
     const [data,setData]=useState([]);
     const [url,setUrl]=useState("");
     const [clip,setClip]=useState("");
-    const [day,setDay]=useState("");
-    const [month,setMonth]=useState("");
+    const [count,setCount]=useState("");
     const [loading,setLoading]=useState(false);
     useEffect(()=>{
         getAllUrls().then((result)=>setData(result.message)).catch((error)=>console.log("Error getting all urls"));
         totalCount().then((result)=>{
-            setDay((result.day).length);
-            setMonth((result.month).length);
+            setCount((result.message).length) 
         }).catch((error)=>console.log("Error getting count"));
     },[])
     return(
         <AppCtx.Provider
-        value={{msg,setMsg,data,url,setUrl,clip,setClip,day,setDay,month,setMonth,loading,setLoading}}
+        value={{msg,setMsg,data,url,setUrl,clip,setClip,count,loading,setLoading}}
         >
             {children}
         </AppCtx.Provider>
