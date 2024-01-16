@@ -39,7 +39,7 @@ export default function Reset(){
     return(
         <div className="reset rounded-3xl">        
             <div className="card-section card-glass">
-                <div className="card w-96 shadow-2xl p-10">
+                <div className="card shadow-2xl w-46 p-3 login:w-96 login:p-10">
                 <div role="tablist" className="tabs tabs-boxed bg-base-300 p-2 skeleton">
                 <a role="tab" className="tab" onClick={()=>navigate("/login")}>Login</a>
                 <a role="tab" className="tab" onClick={()=>navigate("/register")}>Register</a>
@@ -57,7 +57,7 @@ export default function Reset(){
                 </div>
             </div>
            
-            <button className="btn btn-primary w-52 fixed top-4 right-4" onClick={()=>navigate("/")}>Back to Dashboard</button>
+            <button className="btn skeleton w-52 relative top-1  dashboard:fixed dashboard:top-4 dashboard:right-4" onClick={()=>navigate("/")}>Back to Dashboard</button>
         </div>
     )
 }

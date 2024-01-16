@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    screens: {
+      'list': '390px',
+      "dashboard":"828px",
+      "login":"390px"
+    },
   },
   plugins: [require("daisyui")],
   daisyui:{

@@ -48,7 +48,7 @@ export default function ShortUrlPage(){
 
     useEffect(()=>{
         setMsg("");
-        setUrl("");
+        // setUrl("");
         setClip("");
         setLoading(false);
         if(!localStorage.getItem("token")){
@@ -62,8 +62,8 @@ export default function ShortUrlPage(){
     },[])
     return(
         <Mainspace>
-            <div className="card-section card-glass">
-                <div className="card w-96 shadow-2xl p-10">
+            <div className="card-section card-glass mt-2">
+                <div className="card list:w-96 w-56 shadow-2xl list:p-10">
                 <form onSubmit={handleSubmit}>
                 <div className="card-body">
                     <input value={values.longUrl} name="longUrl" onBlur={handleBlur} onChange={handleChange} type="text" placeholder="Paste Long Url" className="skeleton input text-center input-bordered input-secondary w-full max-w-xs" />
@@ -76,9 +76,9 @@ export default function ShortUrlPage(){
             </div>
            
             <div className="card-section mt-5 card-glass">
-            <div className="card w-96 shadow-2xl p-10">
-            <div className="card-body">
-            <h1 className="text-secondary text-l">{url?url:<div className="text-center">Shortened Url will be displayed here</div>}</h1>
+            <div className="card list:w-96 w-56 shadow-2xl list:p-10">
+            <div className="card-body ">
+            <h1 className="text-secondary overflow-scroll">{url?url:<div className="text-center ">Shortened Url will be displayed here</div>}</h1>
               {url?<button className="btn text-primary skeleton" onClick={()=>{
                 copy(url)
                 setClip("on")

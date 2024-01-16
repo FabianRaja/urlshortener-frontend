@@ -63,3 +63,20 @@
     justify-content: center;
     align-items: center;
 }
+@media screen and (min-width:200px) and (max-width:739px) {
+    .topbar-section-1{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .topbar-section-2{
+        display:flex;
+        justify-content: space-evenly;
+    }
+}
+@media screen and (min-width:200px) and (max-width:664px) {
+    .list-section{
+        display:flex;
+        flex-direction: column;
+    }
+}
