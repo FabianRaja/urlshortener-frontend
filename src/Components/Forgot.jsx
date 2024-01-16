@@ -6,22 +6,25 @@ import { AppCtx } from "../Context/AppContext";
 import { forgotPassword } from "../Helper/helper";
 
 export default function Forgot(){
+    //importing useNavigate from react router dom for navigating between pages
   const navigate=useNavigate();
-
+  //importing states from app Context
   const {msg,setMsg,loading,setLoading}=useContext(AppCtx);
-
+  //setting initial values while mounting
   useEffect(()=>{
       setMsg("");
       setLoading(false);
   },[])
-
+  //creating formik for forgot form
   const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
     initialValues:{
         email:"",
     },
+    //using validation schema as forgot Schema
     validationSchema:forgotSchema,
     onSubmit:(formikObj)=>{
         setLoading(true);
+        //passing formikObj of values to forgotPassword function and handling the response
         forgotPassword(formikObj).then((result)=>{
             setTimeout(()=>{
                 setLoading(false)

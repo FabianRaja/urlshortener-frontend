@@ -1,5 +1,5 @@
 import { API } from "./api";
-//redirection
+//function to redirect to the original url using short url
 export async function getUrl(string){
     try{
         const res=await fetch(`http://localhost:9000/getUrl/${string}`,{
@@ -14,6 +14,7 @@ export async function getUrl(string){
            console.log("error getting getUrl",error);
     }
 }
+//function to login user
 export async function loginUser(details){
     try{
         const res=await fetch(`${API}/login`,{
@@ -29,6 +30,7 @@ export async function loginUser(details){
            console.log("error login user",error);
     }
 }
+//function to register user
 export async function registerUser(details){
     try{
         const res=await fetch(`${API}/register`,{
@@ -44,6 +46,7 @@ export async function registerUser(details){
            console.log("error login user",error);
     }
 }
+//function to forgot password and mail
 export async function forgotPassword(details){
     try{
         const res=await fetch(`${API}/forgot`,{
@@ -59,6 +62,7 @@ export async function forgotPassword(details){
            console.log("error forgot password",error);
     }
 }
+//function to reset password
 export async function resetPassword(details,id){
     try{
         const res=await fetch(`${API}/reset/${id}`,{
@@ -74,7 +78,7 @@ export async function resetPassword(details,id){
            console.log("error reset password",error);
     }
 }
-
+//function to get all urls list
 export async function getAllUrls(){
     try{
         const res=await fetch(`${API}/getUrl`,{
@@ -90,6 +94,7 @@ export async function getAllUrls(){
            console.log("error getting all urls",error);
     }
 }
+//function to add long url
 export async function addUrl(details){
     try{
         const res=await fetch(`${API}/addUrl`,{
@@ -106,6 +111,7 @@ export async function addUrl(details){
            console.log("error adding long urls",error);
     }
 }
+//function to add short url
 export async function shortUrl(details){
     try{
         const res=await fetch(`${API}/shortUrl`,{
@@ -122,6 +128,7 @@ export async function shortUrl(details){
            console.log("error creating short url",error);
     }
 }
+//function to activate account
 export async function activateAccount(id){
     try{
         const res=await fetch(`${API}/activation/${id}`,{
@@ -136,6 +143,7 @@ export async function activateAccount(id){
            console.log("error activating account",error);
     }
 }
+//function to get the total number of urls created
 export async function totalCount(){
     try{
         const res=await fetch(`${API}/count`,{

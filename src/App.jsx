@@ -12,6 +12,7 @@ import ActivationPage from './Pages/ActivationPage'
 
 function App() {
   return (
+    //Routes and Route is imported from react router dom to navigate between pages
     <Routes>
       <Route exact path='/' element={<DashboardPage/>}/>
       <Route path='/login' element={<LoginPage/>}/>

@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import AppContext from './Context/AppContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  //importing appcontext for states and browser router for navigation between pages
   <AppContext>
   <BrowserRouter>
   <App />

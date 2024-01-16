@@ -6,14 +6,16 @@ import { useContext, useEffect } from "react";
 import { AppCtx } from "../Context/AppContext";
 
 export default function Register(){
+    //importing useNavigate from react router dom to navigate between pages
     const navigate=useNavigate();
+    //importing states from app context
     const {msg,setMsg,loading,setLoading}=useContext(AppCtx);
-
+    //setting initial values before mounting
     useEffect(()=>{
         setMsg("");
         setLoading(false)
     },[])
-
+   //creating formik for register form
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             firstName:"",
@@ -21,9 +23,11 @@ export default function Register(){
             email:"",
             password:""
         },
+        //validation schema as register schema
         validationSchema:registerSchema,
         onSubmit:(formikObj)=>{
             setLoading(true);
+            //passing formikObj to register User function and handling the responses
            registerUser(formikObj).then((result)=>{
             setTimeout(()=>{
                 setLoading(false);

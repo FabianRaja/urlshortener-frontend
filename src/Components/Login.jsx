@@ -6,23 +6,26 @@ import { AppCtx } from "../Context/AppContext";
 import { loginUser } from "../Helper/helper";
 
 export default function Login(){
+    //importing useNavigate from react router dom for navigating between pages
     const navigate=useNavigate();
-
+    //importing states from app context
     const {msg,setMsg,loading,setLoading}=useContext(AppCtx);
-
+   //setting initial values while mounting
     useEffect(()=>{
         setMsg("");
         setLoading(false);
     },[])
-
+    //creating formik for login page
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             email:"",
             password:""
         },
+        //validation schema as login schema
         validationSchema:loginSchema,
         onSubmit:(formikObj)=>{
             setLoading(true);
+            //passing formikObj to login user function and handling responses
             loginUser(formikObj).then((result)=>{
                 
                 if(result.message==="login success"){

@@ -1,7 +1,6 @@
 export default function UrlList({index,longUrl,shortUrl,createdOn}){
-
+     //reducing longurl to maximum string size
     const original=longUrl.slice(0,30)+"...";
-    // const date=createdOn.slice(0,10)
     return (
 
   <table className="table skeleton mb-1 mt-2 text-secondary ">

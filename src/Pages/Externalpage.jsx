@@ -4,12 +4,17 @@ import { useParams } from "react-router-dom";
 import { AppCtx } from "../Context/AppContext";
 
 export default function Externalpage(){
+    //importing useParams from react router dom to navigate between pages
     const params=useParams();
+    //setting string value as params string value
     const string=params.string;
+    //importing states from the app context
     const {msg,setMsg}=useContext(AppCtx);
     useEffect(()=>{     
+        //passing string values to the getUrl function and handling responses
             getUrl(string).then((result)=>{
                 if(result.message){
+                    //to redirect to the fetched url 
                     window.location.replace(result.message)
                 }else{
                     setMsg(result.error)

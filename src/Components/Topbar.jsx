@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function Topbar(){
+    //importing useNavigate from react router dom to navigate between pages
     const navigate=useNavigate();
+    //getting name values from the local storage and storing it in name
     const name=localStorage.getItem("name");
     return(
         <div className="navbar topbar-section-1">

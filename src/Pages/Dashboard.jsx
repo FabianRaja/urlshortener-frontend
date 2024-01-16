@@ -3,7 +3,9 @@ import Mainspace from "../Components/Mainspace";
 import { useContext } from "react";
 import { AppCtx } from "../Context/AppContext";
 export default function DashboardPage(){
+    //importing useNavigate from react router dom to navigate between pages
     const navigate=useNavigate();
+    //importing states from app context
     const {count}=useContext(AppCtx);
     return(
         <Mainspace>

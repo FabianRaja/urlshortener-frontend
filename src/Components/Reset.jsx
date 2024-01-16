@@ -6,23 +6,30 @@ import { AppCtx } from "../Context/AppContext";
 import { resetPassword } from "../Helper/helper";
 
 export default function Reset(){
+    //importing useNavigate from react router dom to navigate between pages
     const navigate=useNavigate();
+    //importing states from app context
     const {msg,setMsg,loading,setLoading}=useContext(AppCtx);
+    //importing useParams from react router dom to get the params value
     const params=useParams();
+    //setting id values from params
     const id=params.id;
+    //setting initial values while mounting
     useEffect(()=>{
         setMsg("");
         setLoading(false);
     },[])
-
+    //creating formik to reset form
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             newPassword:"",
             password:""
         },
+        //validation schema as reset schema
         validationSchema:resetSchema,
         onSubmit:(formikObj)=>{
             setLoading(true);
+            //passing formik obj to the reset Password function and handling responses
             resetPassword(formikObj,id).then((result)=>{
                 setTimeout(()=>{
                     setLoading(false)

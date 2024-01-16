@@ -8,18 +8,22 @@ import { addUrl, shortUrl } from "../Helper/helper";
 import { AppCtx } from "../Context/AppContext";
 import Swal from "sweetalert2";
 export default function ShortUrlPage(){
-
+    //importing useNavigate from the react router dom to navigate between pages
     const navigate=useNavigate();
+    //importing states from the app context
     const {msg,setMsg,url,setUrl,clip,setClip,loading,setLoading}=useContext(AppCtx);
+    //creating formik for short Url page
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             longUrl:""  
         },
+        //validation schema as url Schema
         validationSchema:urlSchema,
         onSubmit:async(formikObj)=>{
             setLoading(true);
             setMsg("");
             setUrl("");
+            //passing formik obj to the addUrl function and handling responses
             addUrl(formikObj).then((result)=>{
                 if(result.error){
                     setLoading(false)
@@ -45,13 +49,15 @@ export default function ShortUrlPage(){
             
         }
     })
-
+   //setting initial values while mounting
     useEffect(()=>{
         setMsg("");
-        // setUrl("");
+        setUrl("");
         setClip("");
         setLoading(false);
+        //setting condition as if there is no token data from the local storage
         if(!localStorage.getItem("token")){
+            //alert component from Swal
             Swal.fire({
                 icon: "error",
                 title: "Login to create short links",
