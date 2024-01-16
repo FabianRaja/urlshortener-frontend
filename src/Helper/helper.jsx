@@ -2,7 +2,7 @@ import { API } from "./api";
 //function to redirect to the original url using short url
 export async function getUrl(string){
     try{
-        const res=await fetch(`http://localhost:9000/getUrl/${string}`,{
+        const res=await fetch(`${API}/getUrl/${string}`,{
             method:"GET",   
             headers:{
                 "Content-type":"application/json",
