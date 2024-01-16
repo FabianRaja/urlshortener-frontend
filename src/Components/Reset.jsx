@@ -31,10 +31,10 @@ export default function Reset(){
             setLoading(true);
             //passing formik obj to the reset Password function and handling responses
             resetPassword(formikObj,id).then((result)=>{
-                setTimeout(()=>{
+                
                     setLoading(false)
                     setMsg(result.message)
-                },2000)
+               
                 
             }).catch((error)=>{
                 setLoading(false)

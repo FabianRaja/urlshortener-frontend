@@ -26,10 +26,10 @@ export default function Forgot(){
         setLoading(true);
         //passing formikObj of values to forgotPassword function and handling the response
         forgotPassword(formikObj).then((result)=>{
-            setTimeout(()=>{
+            
                 setLoading(false)
                 setMsg(result.message)
-            },2000)
+           
             
         }).catch((error)=>{
             setLoading(false)

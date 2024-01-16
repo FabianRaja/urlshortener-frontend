@@ -38,10 +38,10 @@ export default function ShortUrlPage(){
                         setLoading(false)
                         setMsg(result.error)
                     }else{
-                        setTimeout(()=>{
+                        
                             setLoading(false)
                             setUrl(result.message.shortUrl)
-                        },2000)
+                        
                     }
                 }).catch((error)=>{setLoading(false)
                     console.log("error getting data")})

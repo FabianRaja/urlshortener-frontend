@@ -29,12 +29,12 @@ export default function Login(){
             loginUser(formikObj).then((result)=>{
                 
                 if(result.message==="login success"){
-                    setTimeout(()=>{
+                    
                         setMsg(result.message);
                         localStorage.setItem("token",result.token);
                         localStorage.setItem("name",result.data[0].firstName);
                         navigate("/");
-                    },2000)  
+                     
                 }else{
                     setLoading(false);
                     setMsg(result.message)

@@ -29,10 +29,10 @@ export default function Register(){
             setLoading(true);
             //passing formikObj to register User function and handling the responses
            registerUser(formikObj).then((result)=>{
-            setTimeout(()=>{
+            
                 setLoading(false);
                 setMsg(result.message); 
-            },2000)
+          
                  
         }).catch((error)=>{setLoading(false)
             setMsg(error.message)})
