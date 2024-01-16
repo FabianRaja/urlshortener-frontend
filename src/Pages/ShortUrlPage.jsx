@@ -23,6 +23,7 @@ export default function ShortUrlPage(){
             setLoading(true);
             setMsg("");
             setUrl("");
+            setClip("");
             //passing formik obj to the addUrl function and handling responses
             addUrl(formikObj).then((result)=>{
                 if(result.error){

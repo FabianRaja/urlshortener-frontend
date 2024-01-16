@@ -15,6 +15,7 @@ export default function Externalpage(){
             getUrl(string).then((result)=>{
                 if(result.message){
                     //to redirect to the fetched url 
+                    console.log(result);
                     window.location.replace(result.message)
                 }else{
                     setMsg(result.error)
