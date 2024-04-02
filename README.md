@@ -4,8 +4,8 @@
 
 ## Demo Account : 
 
-* Email : demo@gmail.com
-* Password : Demo@123
+* Email : fabianrajafernandofsd@gmail.com
+* Password : Fabian123@fsd
 
 ## Packages : 
 
