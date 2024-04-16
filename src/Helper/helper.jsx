@@ -23,7 +23,7 @@ export async function loginUser(details){
             body:JSON.stringify(details), 
             headers:{
                 "Content-type":"application/json",
-                "pass":pass
+                "pass-token":pass
             },
         })
         const data=await res.json();

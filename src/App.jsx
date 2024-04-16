@@ -10,6 +10,8 @@ import ShortUrlPage from './Pages/ShortUrlPage'
 import ShortListPage from './Pages/ShortListPage'
 import ActivationPage from './Pages/ActivationPage'
 function App() {
+
+  console.log(import.meta.env.VITE_SAMPLE)
   return (
     //Routes and Route is imported from react router dom to navigate between pages
     <Routes>
