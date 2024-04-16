@@ -1,5 +1,5 @@
 const API=import.meta.env.VITE_API;
-const pass=import.meta.env.VITE_pass;
+const pass=import.meta.env.VITE_PASS;
 //function to redirect to the original url using short url
 export async function getUrl(string){
     try{
