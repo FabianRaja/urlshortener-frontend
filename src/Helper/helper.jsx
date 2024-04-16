@@ -1,4 +1,5 @@
 const API=import.meta.env.VITE_API;
+const pass=import.meta.env.VITE_pass;
 //function to redirect to the original url using short url
 export async function getUrl(string){
     try{
@@ -22,7 +23,7 @@ export async function loginUser(details){
             body:JSON.stringify(details), 
             headers:{
                 "Content-type":"application/json",
-                "pass":`${import.meta.VITE_pass}`
+                "pass":pass
             },
         })
         const data=await res.json();
